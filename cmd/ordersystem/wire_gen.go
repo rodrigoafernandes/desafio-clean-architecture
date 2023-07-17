@@ -8,13 +8,17 @@ package main
 
 import (
 	"database/sql"
+	"github.com/google/wire"
 	"github.com/rodrigoafernandes/desafio-clean-architecture/internal/entity"
 	"github.com/rodrigoafernandes/desafio-clean-architecture/internal/event"
 	"github.com/rodrigoafernandes/desafio-clean-architecture/internal/infra/database"
 	"github.com/rodrigoafernandes/desafio-clean-architecture/internal/infra/web"
 	"github.com/rodrigoafernandes/desafio-clean-architecture/internal/usecase"
 	"github.com/rodrigoafernandes/desafio-clean-architecture/pkg/events"
-	"github.com/google/wire"
+)
+
+import (
+	_ "github.com/go-sql-driver/mysql"
 )
 
 // Injectors from wire.go:
@@ -31,6 +35,12 @@ func NewWebOrderHandler(db *sql.DB, eventDispatcher events.EventDispatcherInterf
 	orderCreated := event.NewOrderCreated()
 	webOrderHandler := web.NewWebOrderHandler(eventDispatcher, orderRepository, orderCreated)
 	return webOrderHandler
+}
+
+func NewFindOrderUseCase(db *sql.DB) *usecase.FindOrderUseCase {
+	orderRepository := database.NewOrderRepository(db)
+	findOrderUseCase := usecase.NewFindOrderUseCase(orderRepository)
+	return findOrderUseCase
 }
 
 // wire.go:
