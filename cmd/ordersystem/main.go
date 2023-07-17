@@ -46,12 +46,8 @@ func main() {
 
 	webserver := webserver.NewWebServer(configs.WebServerPort)
 	webOrderHandler := NewWebOrderHandler(db, eventDispatcher)
-<<<<<<< HEAD
 	webserver.AddHandler("POST", "/order", webOrderHandler.Create)
 	webserver.AddHandler("GET", "/order", webOrderHandler.FindAll)
-=======
-	webserver.AddHandler("/order", webOrderHandler.Create)
->>>>>>> b009ad9 (feat: config rabbitmq connection through env vars and add podman infra config file)
 	fmt.Println("Starting web server on port", configs.WebServerPort)
 	go webserver.Start()
 
