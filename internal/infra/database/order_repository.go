@@ -2,7 +2,6 @@ package database
 
 import (
 	"database/sql"
-	"fmt"
 
 	"github.com/rodrigoafernandes/desafio-clean-architecture/internal/entity"
 )
@@ -34,29 +33,4 @@ func (r *OrderRepository) GetTotal() (int, error) {
 		return 0, err
 	}
 	return total, nil
-}
-
-func (r *OrderRepository) FindAll(page, limit int, sort string) ([]entity.Order, error) {
-	if sort == "" || (sort != "desc" && sort != "asc") {
-		sort = "asc"
-	}
-	query := fmt.Sprintf("SELECT id, price, tax, final_price FROM orders ORDER BY id %s", sort)
-	if page != 0 && limit != 0 {
-		offset := (page - 1) * limit
-		query = fmt.Sprintf("%s LIMIT %d OFFSET %d ", query, limit, offset)
-	}
-	rows, err := r.Db.Query(query)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	var orders []entity.Order
-	for rows.Next() {
-		var order entity.Order
-		if err = rows.Scan(&order.ID, &order.Price, &order.Tax, &order.FinalPrice); err != nil {
-			return nil, err
-		}
-		orders = append(orders, order)
-	}
-	return orders, nil
 }
