@@ -23,6 +23,13 @@ spec:
         - CAP_MKNOD
         - CAP_NET_RAW
         - CAP_AUDIT_WRITE
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      value: root
+    - name: MYSQL_DATABASE
+      value: orders
+    - name: MYSQL_PASSWORD
+      value: root
     volumeMounts:
     - mountPath: /var/lib/mysql
       name: home-rodrigo-projects-golang-expert-desafio-clean-architecture-.docker-mysql-host-0

@@ -10,7 +10,7 @@ Esta listagem precisa ser feita com:
 ## TODOS
 - [X] \- Configurar Rabbitmq através de variáveis de ambiente;
 - [X] \- Criar arquivo para subir infra através do podman;
-- [ ] \- Configurar Database migration;
+- [X] \- Configurar Database migration;
 - [ ] \- Configurar rotas de acordo com o método http;
 - [ ] \- Criar query para buscar as orders;
 - [ ] \- Criar usecase para listar as orders;
