@@ -12,8 +12,8 @@ Esta listagem precisa ser feita com:
 - [X] \- Criar arquivo para subir infra através do podman;
 - [X] \- Configurar Database migration;
 - [X] \- Configurar rotas de acordo com o método http;
-- [ ] \- Criar query para buscar as orders;
-- [ ] \- Criar usecase para listar as orders;
+- [X] \- Criar query para buscar as orders;
+- [X] \- Criar usecase para listar as orders;
 - [ ] \- Criar endpoint http para listar orders;
 - [ ] \- Criar Service GRPC para listar orders;
 - [ ] \- Criar Query GraphQL para listar orders;
