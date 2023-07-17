@@ -15,6 +15,17 @@ message CreateOrderResponse {
   float final_price = 4;
 }
 
+message FindOrderRequest {
+  string sort = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message OrderList {
+  repeated CreateOrderResponse orders = 1;
+}
+
 service OrderService {
-  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse){}
+  rpc FindAllOrder(FindOrderRequest) returns (OrderList){}
 }

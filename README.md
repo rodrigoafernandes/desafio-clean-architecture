@@ -15,7 +15,7 @@ Esta listagem precisa ser feita com:
 - [X] \- Criar query para buscar as orders;
 - [X] \- Criar usecase para listar as orders;
 - [X] \- Criar endpoint http para listar orders;
-- [ ] \- Criar Service GRPC para listar orders;
+- [X] \- Criar Service GRPC para listar orders;
 - [ ] \- Criar Query GraphQL para listar orders;
 - [ ] \- Criar Containerfile para rodar a aplicação;
 - [ ] \- Configurar arquivos a serem ignorados pelo container;
