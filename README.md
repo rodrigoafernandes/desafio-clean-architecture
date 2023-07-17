@@ -14,10 +14,16 @@ Esta listagem precisa ser feita com:
 - [X] \- Configurar rotas de acordo com o método http;
 - [X] \- Criar query para buscar as orders;
 - [X] \- Criar usecase para listar as orders;
-- [ ] \- Criar endpoint http para listar orders;
+- [X] \- Criar endpoint http para listar orders;
 - [ ] \- Criar Service GRPC para listar orders;
 - [ ] \- Criar Query GraphQL para listar orders;
 - [ ] \- Criar Containerfile para rodar a aplicação;
 - [ ] \- Configurar arquivos a serem ignorados pelo container;
 - [ ] \- Documentar processo de build da aplicação;
 - [ ] \- Documentar processo para rodar a aplicação;
+
+### Commands
+```shell
+migrate create -ext=sql -dir=sql/migrations -seq init
+migrate -path=sql/migrations -database "mysql://root:root@tcp(localhost:3306)/orders" -verbose up
+```
