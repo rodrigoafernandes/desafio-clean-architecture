@@ -16,7 +16,7 @@ Esta listagem precisa ser feita com:
 - [X] \- Criar usecase para listar as orders;
 - [X] \- Criar endpoint http para listar orders;
 - [X] \- Criar Service GRPC para listar orders;
-- [ ] \- Criar Query GraphQL para listar orders;
+- [X] \- Criar Query GraphQL para listar orders;
 - [ ] \- Criar Containerfile para rodar a aplicação;
 - [ ] \- Configurar arquivos a serem ignorados pelo container;
 - [ ] \- Documentar processo de build da aplicação;
@@ -26,4 +26,7 @@ Esta listagem precisa ser feita com:
 ```shell
 migrate create -ext=sql -dir=sql/migrations -seq init
 migrate -path=sql/migrations -database "mysql://root:root@tcp(localhost:3306)/orders" -verbose up
+go generate
+evans -r repl
+cd internal/infra && go run github.com/99designs/gqlgen --config ../../gqlgen.yml
 ```

@@ -2,6 +2,12 @@
 
 package model
 
+type ListOrderInput struct {
+	Sort  *string `json:"Sort"`
+	Page  *int    `json:"Page"`
+	Limit *int    `json:"Limit"`
+}
+
 type Order struct {
 	ID         string  `json:"id"`
 	Price      float64 `json:"Price"`
