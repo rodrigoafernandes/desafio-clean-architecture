@@ -27,5 +27,5 @@ message OrderList {
 
 service OrderService {
   rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse){}
-  rpc FindAllOrder(FindOrderRequest) returns (OrderList){}
+  rpc ListOrders(FindOrderRequest) returns (OrderList){}
 }

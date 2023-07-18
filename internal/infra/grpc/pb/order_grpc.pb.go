@@ -23,7 +23,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OrderServiceClient interface {
 	CreateOrder(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
-	FindAllOrder(ctx context.Context, in *FindOrderRequest, opts ...grpc.CallOption) (*OrderList, error)
+	ListOrders(ctx context.Context, in *FindOrderRequest, opts ...grpc.CallOption) (*OrderList, error)
 }
 
 type orderServiceClient struct {
@@ -43,9 +43,9 @@ func (c *orderServiceClient) CreateOrder(ctx context.Context, in *CreateOrderReq
 	return out, nil
 }
 
-func (c *orderServiceClient) FindAllOrder(ctx context.Context, in *FindOrderRequest, opts ...grpc.CallOption) (*OrderList, error) {
+func (c *orderServiceClient) ListOrders(ctx context.Context, in *FindOrderRequest, opts ...grpc.CallOption) (*OrderList, error) {
 	out := new(OrderList)
-	err := c.cc.Invoke(ctx, "/pb.OrderService/FindAllOrder", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.OrderService/ListOrders", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func (c *orderServiceClient) FindAllOrder(ctx context.Context, in *FindOrderRequ
 // for forward compatibility
 type OrderServiceServer interface {
 	CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error)
-	FindAllOrder(context.Context, *FindOrderRequest) (*OrderList, error)
+	ListOrders(context.Context, *FindOrderRequest) (*OrderList, error)
 	mustEmbedUnimplementedOrderServiceServer()
 }
 
@@ -68,8 +68,8 @@ type UnimplementedOrderServiceServer struct {
 func (UnimplementedOrderServiceServer) CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateOrder not implemented")
 }
-func (UnimplementedOrderServiceServer) FindAllOrder(context.Context, *FindOrderRequest) (*OrderList, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FindAllOrder not implemented")
+func (UnimplementedOrderServiceServer) ListOrders(context.Context, *FindOrderRequest) (*OrderList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListOrders not implemented")
 }
 func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
 
@@ -102,20 +102,20 @@ func _OrderService_CreateOrder_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
-func _OrderService_FindAllOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OrderService_ListOrders_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FindOrderRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OrderServiceServer).FindAllOrder(ctx, in)
+		return srv.(OrderServiceServer).ListOrders(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.OrderService/FindAllOrder",
+		FullMethod: "/pb.OrderService/ListOrders",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).FindAllOrder(ctx, req.(*FindOrderRequest))
+		return srv.(OrderServiceServer).ListOrders(ctx, req.(*FindOrderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -132,8 +132,8 @@ var OrderService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _OrderService_CreateOrder_Handler,
 		},
 		{
-			MethodName: "FindAllOrder",
-			Handler:    _OrderService_FindAllOrder_Handler,
+			MethodName: "ListOrders",
+			Handler:    _OrderService_ListOrders_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
