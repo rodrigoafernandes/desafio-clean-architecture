@@ -38,7 +38,7 @@ func (s *OrderService) CreateOrder(ctx context.Context, in *pb.CreateOrderReques
 	}, nil
 }
 
-func (s *OrderService) FindAllOrder(ctx context.Context, in *pb.FindOrderRequest) (*pb.OrderList, error) {
+func (s *OrderService) ListOrders(ctx context.Context, in *pb.FindOrderRequest) (*pb.OrderList, error) {
 	dto := usecase.FindOrderInputDTO{
 		Sort:  in.Sort,
 		Page:  int(in.Page),
