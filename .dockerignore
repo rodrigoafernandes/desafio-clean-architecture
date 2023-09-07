@@ -1,0 +1,6 @@
+README.md
+docker-compose.yaml
+clean-arch-infra.yaml
+.gitignore
+.git
+.docker

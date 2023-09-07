@@ -54,7 +54,7 @@ spec:
   restartPolicy: Never
   volumes:
   - hostPath:
-      path: /home/rodrigo/projects/golang-expert/desafio-clean-architecture/.docker/mysql
+      path: <ABSOLUTE-PATH-TO-YOUR-REPOSITORY>/desafio-clean-architecture/.docker/mysql
       type: Directory
     name: home-rodrigo-projects-golang-expert-desafio-clean-architecture-.docker-mysql-host-0
   - name: c08d489344ea56c220f6fb0572d244a5ff3a4a75cb46bfbec7946822777bc0f2-pvc
