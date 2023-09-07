@@ -4,3 +4,4 @@ clean-arch-infra.yaml
 .gitignore
 .git
 .docker
+.idea

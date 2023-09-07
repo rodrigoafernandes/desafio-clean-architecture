@@ -8,4 +8,5 @@ RUN go mod tidy && \
 FROM scratch
 WORKDIR /usr/local/bin
 COPY --from=build /go/src/desafio-clean-architecture /usr/local/bin/desafio-clean-architecture
-ENTRYPOINT ["./golang-rabbitmq-consumer"]
+COPY --from=build /go/src/cmd/ordersystem/.env /usr/local/bin/.env
+ENTRYPOINT ["./desafio-clean-architecture"]
