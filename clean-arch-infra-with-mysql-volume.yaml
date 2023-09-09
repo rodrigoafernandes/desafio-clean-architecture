@@ -67,8 +67,9 @@ spec:
       persistentVolumeClaim:
         claimName: beac9324f556265634b662e109aaad3d37df80df2bcfe5167859e677abecb60e
     - hostPath:
-        path: /home/rodrigo/projects/golang-expert/desafio-clean-architecture/.docker/mysql
+        path: <CAMINHO-PARA-VOLUME-MYSQL>
         type: Directory
       name: home-rodrigo-projects-golang-expert-desafio-clean-architecture-.docker-mysql-host-0
 status: {}
+
 
